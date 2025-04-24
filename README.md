@@ -18,3 +18,21 @@ User inserts time
 * Timer ends
 
 Diverse color themes
+
+## Components
+
+* Circle
+* Time input
+    * Predetermined Options
+* Theme Toggle
+* BPM input
+    * Predetermined Options
+* stopwatch component
+* message box
+
+## Views
+
+* Initial page
+* Transition page
+* Active page
+* End page (Transition page same component)
