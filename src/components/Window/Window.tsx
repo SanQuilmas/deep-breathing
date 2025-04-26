@@ -1,13 +1,15 @@
 import { Circle } from "../Circle/Circle"
-import { InputArea } from "../InputArea/InputArea"
+import { BPMInput } from "../BPMInput/BPMInput"
 import { TimeSelector } from "../TimeSelector/TimeSelector"
 import { Header, MainArea, WindowContainer } from "./Window.styles"
+import { ThemeToggle } from "../ThemeToggle/ThemeToggle"
 
 export const Window = () =>{
     return (
         <WindowContainer>
             <Header>
-                <InputArea />
+                <BPMInput />
+                <ThemeToggle />
             </Header>
             <MainArea>
                 <TimeSelector />

@@ -18,6 +18,8 @@ export const MainArea = styled.div`
 
 export const Header = styled.div`
     padding: 2rem;
-    align-self: flex-start;
-    margin: 0 auto;
+    justify-content: flex-end;
+    margin: 0 0 0 auto;
+    display: flex;
+    gap: 1rem;
 `;
