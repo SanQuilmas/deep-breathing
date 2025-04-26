@@ -1,7 +1,10 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { CircleDiv } from "./Circle.styles"
+
 export const Circle = () => {
     return (
-        <div>
-            <p>Soy un circulo</p>
-        </div>
+        <CircleDiv>
+            <h1><FontAwesomeIcon icon="fa-solid fa-play" /></h1>
+        </CircleDiv>
     )
 }
