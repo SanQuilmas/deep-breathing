@@ -1,12 +1,25 @@
-import React, { useState } from "react";
+import { useContext, useState } from "react";
 import { Menu, OptionList, OptionItem } from "./PaceInput.styles";
+import { MainContext } from "../Window/Window";
 
 export const PaceInput = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState("");
+  const [selected, setSelected] = useState('');
+  const {setPace} = useContext(MainContext);
 
-  const handleSelect = (value) => {
-    setSelected(value);
+  const handleSelect = (value: string) => {
+    setSelected(value)
+    switch(value){
+      case 'Calm':
+        setPace(10);
+        break;
+      case 'Balanced':
+        setPace(6);
+        break;
+      case 'Active':
+        setPace(2);
+        break;
+    }
     setIsOpen(false);
   };
 

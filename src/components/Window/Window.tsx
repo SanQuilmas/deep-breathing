@@ -7,35 +7,38 @@ import { createContext, useState } from "react"
 import { Background } from "../Background/Background"
 
 interface MainContextProps {
-    bpm: number
-    setBpm: React.Dispatch<React.SetStateAction<number>>
+    pace: number | null
+    setPace: React.Dispatch<React.SetStateAction<number | null>>
     theme: string
     setTheme: React.Dispatch<React.SetStateAction<string>>
-    time: number
-    setTime: React.Dispatch<React.SetStateAction<number>>
-    initTime: number
-    setInitTime: React.Dispatch<React.SetStateAction<number>>
+    time: number | null
+    setTime: React.Dispatch<React.SetStateAction<number | null>>
+    initTime: number | null
+    setInitTime: React.Dispatch<React.SetStateAction<number | null>>
+    breathing: boolean
+    setBreathing: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const MainContext = createContext({} as MainContextProps)
+export const MainContext = createContext({} as MainContextProps)
 
 export const Window = () =>{
-    const [bpm, setBpm] = useState(120)
+    const [pace, setPace] = useState<number | null>(null)
     const [theme, setTheme] = useState("light")
-    const [time, setTime] = useState(0)
-    const [initTime, setInitTime] = useState(0)
+    const [time, setTime] = useState<number | null>(null)
+    const [initTime, setInitTime] = useState<number | null>(null)
+    const [breathing, setBreathing] = useState(false);
 
     return (
-        <MainContext.Provider value={{ bpm, setBpm, theme, setTheme, time, setTime, initTime, setInitTime }}>
+        <MainContext.Provider value={{ pace, setPace, theme, setTheme, time, setTime, initTime, setInitTime, breathing, setBreathing }}>
             <WindowContainer>
                 <Background>
                     <Header>
                         <PaceInput />
                         <ThemeToggle />
                     </Header>
+                    {!breathing ? <TimeSelector /> : ''}
                     <MainArea>
-                        <TimeSelector />
-                        <Circle paceValidation={paceValidation} timeValidation={timeValidation} />
+                        <Circle />
                     </MainArea>
                 </Background>
             </WindowContainer>

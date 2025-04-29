@@ -16,7 +16,7 @@ export const TimeSelector = () => {
             type="number" 
             id="breathingMin" 
             name="breathingMin"
-            value={initTime}
+            value={initTime ?? 0}
             onChange={handleInputChange}
             min={1} max={60} 
             defaultValue={5} />
