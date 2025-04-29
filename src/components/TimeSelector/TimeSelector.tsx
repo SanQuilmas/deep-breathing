@@ -1,13 +1,25 @@
+import { useContext } from "react"
+import { MainContext } from "../Window/Window"
+
 export const TimeSelector = () => {
+
+    const { initTime, setInitTime } = useContext(MainContext)
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setInitTime(parseInt(e.target.value));
+      };
+
     return(
         <div>
             <label htmlFor="breathingMin">Minutes for Breathing</label>
-            <select name="breathingMin">
-                <option value={2.5}>2.5</option>
-                <option value={5}>5</option>
-                <option value={10}>10</option>
-                <option value={30}>30</option>
-            </select>
+            <input 
+            type="number" 
+            id="breathingMin" 
+            name="breathingMin"
+            value={initTime}
+            onChange={handleInputChange}
+            min={1} max={60} 
+            defaultValue={5} />
         </div>
     )
 }
