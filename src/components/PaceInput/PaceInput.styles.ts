@@ -6,6 +6,7 @@ export const Menu = styled.div`
     padding: 8px;
     font-size: 16px;
     text-align: center;
+    border: 1px solid white;
     border-radius: 10px;
     background-color: #FD9C4F;
 `;
@@ -19,6 +20,7 @@ export const OptionList = styled.ul`
     padding: 0;
     background-color: #FFE577;
     text-align: center;
+    border: 1px solid white;
     border-radius: 10px;
     list-style: none;
 `;

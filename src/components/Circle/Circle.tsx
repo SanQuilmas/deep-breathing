@@ -23,7 +23,6 @@ export const Circle = ({ paceValidation, timeValidation }) => {
 
     const handleClick = () => {
         if (breathing) {
-            // Si está respirando y se hace clic, detener la respiración
             setPause(true);
             setBreathing(false);
         } else {
