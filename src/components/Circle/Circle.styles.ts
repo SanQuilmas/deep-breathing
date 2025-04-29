@@ -1,6 +1,8 @@
 import styled from "styled-components";
+import * as motion from "motion/react-client"
 
-export const CircleDiv = styled.div`
+
+export const CircleDiv = styled(motion.div)`
     width: fit-content;
     aspect-ratio: 1 / 1;
 
