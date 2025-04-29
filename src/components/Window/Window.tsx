@@ -1,9 +1,10 @@
 import { Circle } from "../Circle/Circle"
-import { BPMInput } from "../BPMInput/BPMInput"
+import { PaceInput } from "../PaceInput/PaceInput"
 import { TimeSelector } from "../TimeSelector/TimeSelector"
 import { Header, MainArea, WindowContainer } from "./Window.styles"
 import { ThemeToggle } from "../ThemeToggle/ThemeToggle"
 import { createContext, useState } from "react"
+import { Background } from "../Background/Background"
 
 interface MainContextProps {
     bpm: number
@@ -16,7 +17,7 @@ interface MainContextProps {
     setInitTime: React.Dispatch<React.SetStateAction<number>>
 }
 
-export const MainContext = createContext({} as MainContextProps)
+const MainContext = createContext({} as MainContextProps)
 
 export const Window = () =>{
     const [bpm, setBpm] = useState(120)
@@ -27,14 +28,16 @@ export const Window = () =>{
     return (
         <MainContext.Provider value={{ bpm, setBpm, theme, setTheme, time, setTime, initTime, setInitTime }}>
             <WindowContainer>
-                <Header>
-                    <BPMInput />
-                    <ThemeToggle />
-                </Header>
-                <MainArea>
-                    <TimeSelector />
-                    <Circle/>
-                </MainArea>
+                <Background>
+                    <Header>
+                        <PaceInput />
+                        <ThemeToggle />
+                    </Header>
+                    <MainArea>
+                        <TimeSelector />
+                        <Circle paceValidation={paceValidation} timeValidation={timeValidation} />
+                    </MainArea>
+                </Background>
             </WindowContainer>
         </MainContext.Provider>
     )
