@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
     align-items: center;
     width: 100vw;
     height: 100vh;
-    background-color: #FF8967;
+    
 `;
 
 const BaseBlob = styled.div`

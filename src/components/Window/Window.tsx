@@ -17,6 +17,8 @@ interface MainContextProps {
     setInitTime: React.Dispatch<React.SetStateAction<number | null>>
     breathing: boolean
     setBreathing: React.Dispatch<React.SetStateAction<boolean>>
+    darkMode: boolean
+    setDarkMode: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export const MainContext = createContext({} as MainContextProps)
@@ -27,9 +29,10 @@ export const Window = () =>{
     const [time, setTime] = useState<number | null>(null)
     const [initTime, setInitTime] = useState<number | null>(null)
     const [breathing, setBreathing] = useState(false);
+    const [darkMode, setDarkMode] = useState(false);
 
     return (
-        <MainContext.Provider value={{ pace, setPace, theme, setTheme, time, setTime, initTime, setInitTime, breathing, setBreathing }}>
+        <MainContext.Provider value={{ pace, setPace, theme, setTheme, time, setTime, initTime, setInitTime, breathing, setBreathing, darkMode, setDarkMode }}>
             <WindowContainer>
                 <Background>
                     <Header>
