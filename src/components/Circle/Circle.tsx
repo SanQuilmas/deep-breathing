@@ -3,12 +3,13 @@ import * as motion from "motion/react-client";
 import { useEffect, useState, useContext } from 'react';
 import { Stopwatch } from '../Stopwatch/StopWatch';
 import { MainContext } from "../Window/Window";
+import { Ball, Text } from "./Circle.styles";
 
 export const Circle = () => {
     
 	const {setTime, initTime} = useContext(MainContext);
     const {breathing, setBreathing} = useContext(MainContext);
-    const {pace} = useContext(MainContext);
+    const {pace, theme} = useContext(MainContext);
     const [hovered, setHovered] = useState(false);
     const [clicked, setClicked] = useState(false);
     const [moved, setMoved] = useState(false);
@@ -97,48 +98,31 @@ export const Circle = () => {
         };
     }
 
+    console.log(theme);
+
     return (
-        <motion.div
+        <Ball
             initial={{ scale: 1, y: "0%" }}
             animate={animation}
             transition={transition}
-            style={ball}
+            themeColor={theme.circleColor}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             onClick={handleClick}
         >
             {hovered && (
-                <motion.span
-                    style={textStyle}
+                <Text
+                    themeColor={theme.circleText}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.5 }}
                 >
                     <Stopwatch />
-                </motion.span>
+                </Text>
             )}
             
             {clicked ? <Stopwatch/> : ''}
 
-        </motion.div>
+        </Ball>
     );
-};
-
-const ball = {
-    width: 200,
-    height: 200,
-    backgroundColor: "#dd00ee",
-    borderRadius: "50%",
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'absolute',
-    top: '50%',
-    left: 'calc(50% - 100px)',
-    transformOrigin: 'center',
-};
-
-const textStyle = {
-    color: '#ffffff',
-    fontSize: '16px',
 };

@@ -3,8 +3,10 @@ import { PaceInput } from "../PaceInput/PaceInput"
 import { TimeSelector } from "../TimeSelector/TimeSelector"
 import { Header, MainArea, WindowContainer } from "./Window.styles"
 import { ThemeToggle } from "../ThemeToggle/ThemeToggle"
-import { createContext, useState } from "react"
+import { createContext, useEffect, useState } from "react"
 import { Background } from "../Background/Background"
+import { ThemeProvider } from "styled-components"
+import { lightTheme, darkTheme } from "../../theme"
 
 interface MainContextProps {
     pace: number | null
@@ -25,26 +27,34 @@ export const MainContext = createContext({} as MainContextProps)
 
 export const Window = () =>{
     const [pace, setPace] = useState<number | null>(null)
-    const [theme, setTheme] = useState("light")
+    const [theme, setTheme] = useState<"light" | "dark">("light")
     const [time, setTime] = useState<number | null>(null)
     const [initTime, setInitTime] = useState<number | null>(null)
     const [breathing, setBreathing] = useState(false);
     const [darkMode, setDarkMode] = useState(false);
 
+    const styledTheme = theme === "dark" ? darkTheme : lightTheme;
+
+    useEffect(() => {
+        console.log(theme);
+    }, [theme]);
+
     return (
         <MainContext.Provider value={{ pace, setPace, theme, setTheme, time, setTime, initTime, setInitTime, breathing, setBreathing, darkMode, setDarkMode }}>
-            <WindowContainer>
-                <Background>
-                    <Header>
-                        <PaceInput />
-                        <ThemeToggle />
-                    </Header>
-                    {!breathing ? <TimeSelector /> : ''}
-                    <MainArea>
-                        <Circle />
-                    </MainArea>
-                </Background>
-            </WindowContainer>
+            <ThemeProvider theme={styledTheme}>
+                <WindowContainer>
+                    <Background>
+                        <Header>
+                            <PaceInput />
+                            <ThemeToggle />
+                        </Header>
+                        {!breathing ? <TimeSelector /> : ''}
+                        <MainArea>
+                            <Circle />
+                        </MainArea>
+                    </Background>
+                </WindowContainer>
+            </ThemeProvider>
         </MainContext.Provider>
     )
 }
