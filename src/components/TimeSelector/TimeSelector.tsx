@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import { MainContext } from "../Window/Window"
+import { TimeInput } from "./TimeSelector.styles"
 
 export const TimeSelector = () => {
 
@@ -10,16 +11,15 @@ export const TimeSelector = () => {
       };
 
     return(
-        <div>
-            <label htmlFor="breathingMin">Minutes for Breathing</label>
-            <input 
+        <TimeInput
             type="number" 
             id="breathingMin" 
             name="breathingMin"
-            value={initTime ?? 0}
+            value={initTime ?? ''}
             onChange={handleInputChange}
             min={1} max={60} 
-            defaultValue={5} />
-        </div>
-    )
+            defaultValue={5}
+            placeholder="Set time" 
+        />
+    );
 }

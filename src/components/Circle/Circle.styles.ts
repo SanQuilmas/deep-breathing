@@ -1,24 +1,23 @@
-import styled from "styled-components";
-import * as motion from "motion/react-client"
+import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
-
-export const CircleDiv = styled(motion.div)`
-    width: fit-content;
-    aspect-ratio: 1 / 1;
-
+export const Ball = styled(motion.div)`
+    width: 200px;
+    height: 200px;
+    background-color: ${({ theme }) => theme.circleColor}; 
     border-radius: 50%;
-    border: 1px solid red;
-
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    padding: 0.5rem;
-    transition: all 0.3s ease-in-out;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: calc(50% - 100px);
+    transform-origin: center;
+    transition: background-color 0.3s ease;
+`;
 
-    &:hover {
-        background-color: rgba(255, 0, 0, 0.1);
-        cursor: pointer;
-        scale: 1.05;
-    }
+export const Text = styled(motion.span)`
+    color: ${({ theme }) => theme.circleText};
+    font-size: 16px;
+    transition: color 0.3s ease;
 `;
