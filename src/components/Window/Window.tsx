@@ -12,7 +12,7 @@ interface MainContextProps {
     pace: number | null
     setPace: React.Dispatch<React.SetStateAction<number | null>>
     theme: string
-    setTheme: React.Dispatch<React.SetStateAction<string>>
+    setTheme: React.Dispatch<React.SetStateAction<"light" | "dark">>
     time: number | null
     setTime: React.Dispatch<React.SetStateAction<number | null>>
     initTime: number | null
@@ -21,6 +21,8 @@ interface MainContextProps {
     setBreathing: React.Dispatch<React.SetStateAction<boolean>>
     darkMode: boolean
     setDarkMode: React.Dispatch<React.SetStateAction<boolean>>
+    clicked: boolean
+    setClicked: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export const MainContext = createContext({} as MainContextProps)
@@ -32,6 +34,7 @@ export const Window = () =>{
     const [initTime, setInitTime] = useState<number | null>(null)
     const [breathing, setBreathing] = useState(false);
     const [darkMode, setDarkMode] = useState(false);
+    const [clicked, setClicked] = useState(false);
 
     const styledTheme = theme === "dark" ? darkTheme : lightTheme;
 
@@ -40,7 +43,7 @@ export const Window = () =>{
     }, [theme]);
 
     return (
-        <MainContext.Provider value={{ pace, setPace, theme, setTheme, time, setTime, initTime, setInitTime, breathing, setBreathing, darkMode, setDarkMode }}>
+        <MainContext.Provider value={{ pace, setPace, theme, setTheme, time, setTime, initTime, setInitTime, breathing, setBreathing, darkMode, setDarkMode, clicked, setClicked }}>
             <ThemeProvider theme={styledTheme}>
                 <WindowContainer>
                     <Background>
@@ -48,7 +51,7 @@ export const Window = () =>{
                             <PaceInput />
                             <ThemeToggle />
                         </Header>
-                        {!breathing ? <TimeSelector /> : ''}
+                        {!breathing && !clicked ? <TimeSelector /> : ''}
                         <MainArea>
                             <Circle />
                         </MainArea>

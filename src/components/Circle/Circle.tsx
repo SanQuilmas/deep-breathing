@@ -1,6 +1,5 @@
 import { easeInOut } from "motion";
-import * as motion from "motion/react-client";
-import { useEffect, useState, useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Stopwatch } from '../Stopwatch/StopWatch';
 import { MainContext } from "../Window/Window";
 import { Ball, Text } from "./Circle.styles";
@@ -11,7 +10,7 @@ export const Circle = () => {
     const {breathing, setBreathing} = useContext(MainContext);
     const {pace, theme} = useContext(MainContext);
     const [hovered, setHovered] = useState(false);
-    const [clicked, setClicked] = useState(false);
+    const {clicked, setClicked} = useContext(MainContext);
     const [moved, setMoved] = useState(false);
     const [pause, setPause] = useState(false);
     const [reset, setReset] = useState(false);
@@ -29,9 +28,12 @@ export const Circle = () => {
 
     //TODO: Fix click behavior
     const handleClick = () => {
-        if (breathing) {
+        if (breathing && clicked) {
             setPause(true);
             setBreathing(false);
+        } else if(!breathing && pause){
+            setPause(false);
+            setBreathing(true);
         } else {
             setClicked(true);
             setTime((initTime ?? 0) * 60);
