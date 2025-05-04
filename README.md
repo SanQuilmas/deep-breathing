@@ -1,38 +1,23 @@
 
 # Deep Breathing App
 
-## MVP
+<table>
+  <tr>
+    <td><img src="readmeIMG/homeLightSS.png" width="150"/></td>
+    <td><img src="readmeIMG/runningLightSS.png" width="150"/></td>
+  </tr>
+  <tr>
+    <td><img src="readmeIMG/homeSS.png" width="150"/></td>
+    <td><img src="readmeIMG/runningSS.png" width="150"/></td>
+  </tr>
+</table>
 
-Application/website that helps with breathing exercises
+A simple and customizable web app for guided breathing exercises. 
 
-## ACCEPTANCE CRITERIA
+Features include 
+* Inhale/exhale visual indicators
+* Timer options
+* BPM settings
+* Multiple color themes 
 
-User clicks main button
-
-User inserts time
-
-* Timer starts
-    * Indicators of inhale/exhale cycle
-    * Visual effects padrisimos con CSS aca bien padres
-    * Auditive effects menos padrisimos
-* Timer ends
-
-Diverse color themes
-
-## Components
-
-* Circle
-* Time input
-    * Predetermined Options
-* Theme Toggle
-* BPM input
-    * Predetermined Options
-* stopwatch component
-* message box
-
-## Views
-
-* Initial page
-* Transition page
-* Active page
-* End page (Transition page same component)
+To enhance relaxation and focus. 
